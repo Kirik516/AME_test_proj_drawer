@@ -41,6 +41,8 @@ int TForm1::toScreen(float val, float start, float stop, int space)
 
 void TForm1::draw(int width, int height)
 {
+    this->graph->Width = width;
+    this->graph->Height = height;
     TCanvas *canv = this->graph->Canvas;
 
     // beautiful border
