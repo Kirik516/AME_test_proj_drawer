@@ -92,3 +92,9 @@ void __fastcall TForm1::FormShow(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::FormPaint(TObject *Sender)
+{
+    this->GraphLabel->Canvas->Draw(0, 0, this->graph);
+}
+//---------------------------------------------------------------------------
+

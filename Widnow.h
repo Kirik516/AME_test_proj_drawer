@@ -20,6 +20,7 @@ __published:	// IDE-managed Components
     TLabel *LabelY;
     TGroupBox *GroupBox1;
     void __fastcall FormShow(TObject *Sender);
+    void __fastcall FormPaint(TObject *Sender);
 
 private:	// User declarations
     int sampling; // graph sampling
