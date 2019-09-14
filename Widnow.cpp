@@ -41,7 +41,7 @@ int TForm1::toScreen(float val, float start, float stop, int space)
 
 void TForm1::draw(int width, int height)
 {
-    TCanvas *canv = this->GraphView1->Graph->Canvas;
+    TCanvas *canv = this->graph->Canvas;
 
     // beautiful border
     canv->Pen->Color = clSkyBlue;
