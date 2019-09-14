@@ -56,7 +56,7 @@ void TForm1::draw(int width, int height)
 
     float h = (this->stopGraphX - this->startGraphX) / this->sampling;
     float px1 = this->startGraphX;
-    float py1 = this->drawindFunstion(this->coefA, this->coefB, this->coefC,
+    float py1 = this->drawingFunstion(this->coefA, this->coefB, this->coefC,
                                                             this->startGraphX);
     float px2;
     float py2;
@@ -64,7 +64,7 @@ void TForm1::draw(int width, int height)
     for (int i = 0; i < this->sampling; i++)
     {
         px2 = px1 + h;
-        py2 = this->drawindFunstion(this->coefA, this->coefB, this->coefC, px2);
+        py2 = this->drawingFunstion(this->coefA, this->coefB, this->coefC, px2);
         canv->MoveTo(this->toScreen(px1, this->startGraphX, this->stopGraphX, width),
                      this->toScreen(py1, this->startGraphY, this->stopGraphY, height));
 
