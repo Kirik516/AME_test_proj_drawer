@@ -12,6 +12,14 @@ TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
     : TForm(Owner)
+    , sampling(1000)
+    , startGraphX(-10.0)
+    , stopGraphX(10.0)
+    , startGraphY(-10.0)
+    , stopGraphY(10.0)
+    , coefA(0.0)
+    , coefB(1.0)
+    , coefC(1.0)
 {
 }
 //---------------------------------------------------------------------------
