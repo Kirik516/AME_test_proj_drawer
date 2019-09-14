@@ -20,6 +20,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
     , coefA(0.0)
     , coefB(1.0)
     , coefC(1.0)
+    , graph(new TBitmap)
 {
 }
 //---------------------------------------------------------------------------
