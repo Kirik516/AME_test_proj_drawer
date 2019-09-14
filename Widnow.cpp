@@ -42,7 +42,6 @@ int TForm1::toScreen(float val, float start, float stop, int space)
 void TForm1::draw(int width, int height)
 {
     TCanvas *canv = this->GraphView1->Graph->Canvas;
-    canv->Lock();
 
     // beautiful border
     canv->Pen->Color = clSkyBlue;
@@ -82,7 +81,6 @@ void TForm1::draw(int width, int height)
         px1 = px2;
         py1 = py2;
     }
-    canv->Unlock();
 }
 //---------------------------------------------------------------------------
 
