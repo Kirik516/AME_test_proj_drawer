@@ -15,7 +15,10 @@ class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
     TButton *ButtonRefresh;
-    TGraphView *GraphView1;
+    TLabel *GraphLabel;
+    TLabel *LabelX;
+    TLabel *LabelY;
+    TGroupBox *GroupBox1;
 
 private:	// User declarations
     int sampling; // graph sampling

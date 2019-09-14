@@ -11,11 +11,84 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnPaint = FormPaint
+  OnShow = FormShow
   DesignSize = (
     600
     400)
   PixelsPerInch = 96
   TextHeight = 13
+  object GroupBox1: TGroupBox
+    Left = 8
+    Top = 8
+    Width = 584
+    Height = 353
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Caption = 'Graph for function: y = A + Bsin(Ct)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    Padding.Left = 2
+    Padding.Top = 2
+    Padding.Right = 2
+    Padding.Bottom = 2
+    ParentFont = False
+    TabOrder = 0
+    object GraphLabel: TLabel
+      Left = 47
+      Top = 20
+      Width = 533
+      Height = 313
+      Align = alClient
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      ExplicitLeft = 45
+      ExplicitTop = 18
+      ExplicitWidth = 3
+      ExplicitHeight = 13
+    end
+    object LabelX: TLabel
+      Left = 4
+      Top = 333
+      Width = 576
+      Height = 16
+      Align = alBottom
+      Alignment = taCenter
+      Caption = 'LabelX'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 329
+      ExplicitWidth = 43
+    end
+    object LabelY: TLabel
+      Left = 4
+      Top = 20
+      Width = 43
+      Height = 313
+      Align = alLeft
+      Caption = 'LabelY'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 16
+      ExplicitHeight = 16
+    end
+  end
   object ButtonRefresh: TButton
     Left = 488
     Top = 367
@@ -23,33 +96,6 @@ object Form1: TForm1
     Height = 25
     Anchors = [akRight, akBottom]
     Caption = 'Refresh'
-    TabOrder = 0
-  end
-  inline GraphView1: TGraphView
-    Left = 8
-    Top = 8
-    Width = 584
-    Height = 345
-    Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 584
-    ExplicitHeight = 345
-    inherited Graph: TLabel
-      Width = 553
-      Height = 316
-    end
-    inherited LabelX: TLabel
-      Top = 332
-      Width = 584
-      ExplicitTop = 332
-    end
-    inherited LabelY: TLabel
-      Height = 316
-    end
-    inherited LabelTitle: TLabel
-      Width = 584
-    end
   end
 end

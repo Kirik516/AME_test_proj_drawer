@@ -5,7 +5,6 @@
 #include <tchar.h>
 //---------------------------------------------------------------------------
 USEFORM("Widnow.cpp", Form1);
-USEFORM("Unit1.cpp", GraphView); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
