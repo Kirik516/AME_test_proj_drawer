@@ -19,7 +19,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
     , coefA(0.0)
     , coefB(1.0)
     , coefC(1.0)
-    , graph(new TBitmap)
+    , graphBack(new TBitmap)
 {
 }
 //---------------------------------------------------------------------------
@@ -40,9 +40,9 @@ int TForm1::toScreen(float val, float start, float stop, int space)
 
 void TForm1::draw(int width, int height)
 {
-    this->graph->Width = width;
-    this->graph->Height = height;
-    TCanvas *canv = this->graph->Canvas;
+    this->graphBack->Width = width;
+    this->graphBack->Height = height;
+    TCanvas *canv = this->graphBack->Canvas;
 
     // beautiful border
     canv->Pen->Color = clSkyBlue;
@@ -94,7 +94,7 @@ void __fastcall TForm1::FormShow(TObject *Sender)
 
 void __fastcall TForm1::FormPaint(TObject *Sender)
 {
-    this->GraphLabel->Canvas->Draw(0, 0, this->graph);
+    this->GraphLabel->Canvas->Draw(0, 0, this->graphBack);
 }
 //---------------------------------------------------------------------------
 

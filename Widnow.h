@@ -33,7 +33,7 @@ private:	// User declarations
     float coefB;
     float coefC;
 
-    TBitmap *graph;
+    TBitmap *graphBack;
 
     float drawingFunstion(float coefA, float coefB, float coefC, float t);
     int toScreen(float val, float start, float stop, int space);
