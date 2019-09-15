@@ -25,6 +25,11 @@ __published:	// IDE-managed Components
     void __fastcall FormPaint(TObject *Sender);
     void __fastcall ResizeTimerTimer(TObject *Sender);
     void __fastcall FormResize(TObject *Sender);
+    void __fastcall FormMouseWheelDown(TObject *Sender, TShiftState Shift, TPoint &MousePos,
+          bool &Handled);
+    void __fastcall FormMouseWheelUp(TObject *Sender, TShiftState Shift, TPoint &MousePos,
+          bool &Handled);
+    void __fastcall ScrollTimerTimer(TObject *Sender);
 
 private:	// User declarations
     int sampling; // graph sampling
@@ -37,6 +42,7 @@ private:	// User declarations
 
     TBitmap *graphBack;
 
+    void zoom(int direction);
     float drawingFunstion(float coefA, float coefB, float coefC, float t);
     int toScreen(float val, float start, float stop, int space);
     void draw(int width, int height);

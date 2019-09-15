@@ -20,7 +20,32 @@ __fastcall TForm1::TForm1(TComponent* Owner)
     , coefB(1.0)
     , coefC(1.0)
     , graphBack(new TBitmap)
+{}
+//---------------------------------------------------------------------------
+
+void TForm1::zoom(int direction)
 {
+    if ( ((this->stopGraphX - direction) - (this->startGraphX + direction)) == 0
+        || ((this->stopGraphY - direction) - (this->startGraphY + direction)) == 0)
+    {
+        return;
+    }
+
+    float fDirection = direction/4.0;
+    this->startGraphX += fDirection;
+    this->startGraphY += fDirection;
+    this->stopGraphX -= fDirection;
+    this->stopGraphY -= fDirection;
+
+    // allows start redraw after scroll has been ended
+    if (this->ScrollTimer->Enabled)
+    {
+        this->ScrollTimer->Enabled = false;
+        this->ScrollTimer->Enabled = true;
+        return;
+    }
+
+    this->ScrollTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------
 
@@ -118,3 +143,25 @@ void __fastcall TForm1::FormResize(TObject *Sender)
     this->ResizeTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormMouseWheelDown(TObject *Sender, TShiftState Shift, TPoint &MousePos,
+          bool &Handled)
+{
+    this->zoom(-1);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormMouseWheelUp(TObject *Sender, TShiftState Shift, TPoint &MousePos,
+          bool &Handled)
+{
+    this->zoom(1);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ScrollTimerTimer(TObject *Sender)
+{
+    this->ScrollTimer->Enabled = false;
+    this->FormShow(NULL);
+}
+//---------------------------------------------------------------------------
+
