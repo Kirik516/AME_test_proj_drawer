@@ -11,7 +11,10 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnMouseWheelDown = FormMouseWheelDown
+  OnMouseWheelUp = FormMouseWheelUp
   OnPaint = FormPaint
+  OnResize = FormResize
   OnShow = FormShow
   DesignSize = (
     600
@@ -48,8 +51,6 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 45
-      ExplicitTop = 18
       ExplicitWidth = 3
       ExplicitHeight = 13
     end
@@ -67,8 +68,6 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 329
       ExplicitWidth = 43
     end
     object LabelY: TLabel
@@ -84,8 +83,6 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 16
       ExplicitHeight = 16
     end
   end
@@ -97,5 +94,19 @@ object Form1: TForm1
     Anchors = [akRight, akBottom]
     Caption = 'Refresh'
     TabOrder = 1
+  end
+  object ResizeTimer: TTimer
+    Enabled = False
+    Interval = 200
+    OnTimer = ResizeTimerTimer
+    Left = 16
+    Top = 48
+  end
+  object ScrollTimer: TTimer
+    Enabled = False
+    Interval = 16
+    OnTimer = ScrollTimerTimer
+    Left = 80
+    Top = 48
   end
 end

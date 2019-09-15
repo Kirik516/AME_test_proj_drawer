@@ -7,6 +7,7 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
+#include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 #include <fstream>
 //---------------------------------------------------------------------------
@@ -18,6 +19,8 @@ __published:	// IDE-managed Components
     TLabel *LabelX;
     TLabel *LabelY;
     TGroupBox *GroupBox1;
+    TTimer *ResizeTimer;
+    TTimer *ScrollTimer;
     void __fastcall FormShow(TObject *Sender);
     void __fastcall FormPaint(TObject *Sender);
 
