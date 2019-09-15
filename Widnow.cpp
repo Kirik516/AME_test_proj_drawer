@@ -98,3 +98,23 @@ void __fastcall TForm1::FormPaint(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::ResizeTimerTimer(TObject *Sender)
+{
+    this->ResizeTimer->Enabled = false;
+    this->FormShow(NULL);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormResize(TObject *Sender)
+{
+    // allows start redraw after resize has been ended
+    if (this->ResizeTimer->Enabled)
+    {
+        this->ResizeTimer->Enabled = false;
+        this->ResizeTimer->Enabled = true;
+        return;
+    }
+
+    this->ResizeTimer->Enabled = true;
+}
+//---------------------------------------------------------------------------

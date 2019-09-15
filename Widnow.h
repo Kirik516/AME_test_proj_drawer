@@ -23,6 +23,8 @@ __published:	// IDE-managed Components
     TTimer *ScrollTimer;
     void __fastcall FormShow(TObject *Sender);
     void __fastcall FormPaint(TObject *Sender);
+    void __fastcall ResizeTimerTimer(TObject *Sender);
+    void __fastcall FormResize(TObject *Sender);
 
 private:	// User declarations
     int sampling; // graph sampling
