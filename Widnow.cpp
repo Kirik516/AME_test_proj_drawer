@@ -88,6 +88,7 @@ void TForm1::draw(int width, int height)
 void __fastcall TForm1::FormShow(TObject *Sender)
 {
     this->draw(this->GraphLabel->Width, this->GraphLabel->Height);
+    this->GraphLabel->Repaint();
 }
 //---------------------------------------------------------------------------
 
