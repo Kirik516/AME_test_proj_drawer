@@ -165,3 +165,104 @@ void __fastcall TForm1::ScrollTimerTimer(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void TForm1::openFile()
+{
+    // code from https://eax.me/winapi-file-mapping/
+
+    wchar_t *fileName = this->PathEdit->Text.c_str();
+    this->DebugLabel->Caption = fileName;
+    const wchar_t fn[] = L"D:\\Embarcadero\\Projects\\graph_coefs.tgh";
+    this->mappedData.hFile = CreateFile(fileName, GENERIC_READ, 0, nullptr,
+                          OPEN_EXISTING,
+                          FILE_ATTRIBUTE_NORMAL, nullptr);
+
+    if(this->mappedData.hFile == INVALID_HANDLE_VALUE)
+    {
+        std::cerr << "fileMappingCreate - CreateFile failed, fname = "
+                << fileName << std::endl;
+        return;
+    }
+
+    DWORD dwFileSize = GetFileSize(this->mappedData.hFile, nullptr);
+    if(dwFileSize == INVALID_FILE_SIZE)
+    {
+        std::cerr << "fileMappingCreate - GetFileSize failed, fname = "
+                << fileName << std::endl;
+        CloseHandle(this->mappedData.hFile);
+        return;
+    }
+
+    HANDLE hMapping = CreateFileMapping(this->mappedData.hFile, nullptr, PAGE_READONLY,
+                                    0, 0, nullptr);
+    if(hMapping == nullptr)
+    {
+        std::cerr << "fileMappingCreate - CreateFileMapping failed, fname = "
+                << fileName << std::endl;
+        CloseHandle(this->mappedData.hFile);
+        return;
+    }
+
+    unsigned char* dataPtr = (unsigned char*)MapViewOfFile(hMapping,
+                                                       FILE_MAP_READ,
+                                                       0,
+                                                       0,
+                                                       dwFileSize);
+    if(dataPtr == nullptr)
+    {
+        std::cerr << "fileMappingCreate - MapViewOfFile failed, fname = "
+                << fileName << std::endl;
+        CloseHandle(hMapping);
+        CloseHandle(this->mappedData.hFile);
+        return;
+    }
+
+    this->mappedData.hMapping = hMapping;
+    this->mappedData.fsize = (size_t)dwFileSize;
+    this->mappedData.dataPtr = dataPtr;
+}
+//---------------------------------------------------------------------------
+
+void TForm1::readCoefs()
+{
+    const char allowed[] = ".1234567890";
+    char *coefs = new char[this->mappedData.fsize + 1];
+    std::strncpy(coefs, reinterpret_cast<char*>(this->mappedData.dataPtr),
+                    this->mappedData.fsize);
+    coefs[this->mappedData.fsize] = '\0';
+
+    // reading coefA
+    size_t coefLenght = strspn(coefs, allowed);
+    char *coef = new char[coefLenght];
+    strncpy(coef, coefs, coefLenght);
+    coef[coefLenght - 1] = '\0';
+    this->coefA = atof(coef);
+    delete[] coef;
+
+    // finding next coef
+    coefs += coefLenght;
+    coefLenght = strcspn(coefs, allowed);
+    coefs += coefLenght;
+    // reading coefB
+    coefLenght = strspn(coefs, allowed);
+    coef = new char[coefLenght];
+    strncpy(coef, coefs, coefLenght);
+    coef[coefLenght - 1] = '\0';
+    this->coefB = atof(coef);
+    delete[] coef;
+
+    // finding next coef
+    coefs += coefLenght;
+    coefLenght = strcspn(coefs, allowed);
+    coefs += coefLenght;
+    // reading coefC
+    coefLenght = strspn(coefs, allowed);
+    coef = new char[coefLenght];
+    strncpy(coef, coefs, coefLenght);
+    coef[coefLenght - 1] = '\0';
+    this->coefC = atof(coef);
+    delete[] coef;
+
+    delete[] coefs;
+}
+//---------------------------------------------------------------------------
+

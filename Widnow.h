@@ -10,6 +10,9 @@
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 #include <fstream>
+#include <cstring>
+
+#include <windows.h>
 //---------------------------------------------------------------------------
 // flickering may be expiriensed
 //---------------------------------------------------------------------------
@@ -37,6 +40,13 @@ __published:	// IDE-managed Components
     void __fastcall ScrollTimerTimer(TObject *Sender);
 
 private:	// User declarations
+    struct FileMapping {
+        HANDLE hFile;
+        HANDLE hMapping;
+        size_t fsize;
+        unsigned char* dataPtr;
+    } mappedData;
+
     int sampling; // graph sampling
     float startGraphX, stopGraphX;
     float startGraphY, stopGraphY;
@@ -51,6 +61,10 @@ private:	// User declarations
     float drawingFunstion(float coefA, float coefB, float coefC, float t);
     int toScreen(float val, float start, float stop, int space);
     void draw(int width, int height);
+
+    // reading date
+    void openFile();
+    void readCoefs();
 
 public:		// User declarations
     __fastcall TForm1(TComponent* Owner);
