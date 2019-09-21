@@ -235,10 +235,7 @@ bool TForm1::openFile()
 void TForm1::readCoefs()
 {
     const char allowed[] = ".1234567890";
-    char *coefs = new char[this->mappedData.fsize + 1];
-    std::strncpy(coefs, reinterpret_cast<char*>(this->mappedData.dataPtr),
-                    this->mappedData.fsize);
-    coefs[this->mappedData.fsize] = '\0';
+    char *coefs = reinterpret_cast<char*>(this->mappedData.dataPtr);
 
     // reading coefA
     size_t coefLenght = strspn(coefs, allowed);
