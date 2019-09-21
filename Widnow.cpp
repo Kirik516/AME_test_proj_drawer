@@ -239,9 +239,9 @@ void TForm1::readCoefs()
 
     // reading coefA
     size_t coefLenght = strspn(coefs, allowed);
-    char *coef = new char[coefLenght];
+    char *coef = new char[coefLenght + 1];
     strncpy(coef, coefs, coefLenght);
-    coef[coefLenght - 1] = '\0';
+    coef[coefLenght] = '\0';
     this->coefA = atof(coef);
     delete[] coef;
 
@@ -251,9 +251,9 @@ void TForm1::readCoefs()
     coefs += coefLenght;
     // reading coefB
     coefLenght = strspn(coefs, allowed);
-    coef = new char[coefLenght];
+    coef = new char[coefLenght + 1];
     strncpy(coef, coefs, coefLenght);
-    coef[coefLenght - 1] = '\0';
+    coef[coefLenght] = '\0';
     this->coefB = atof(coef);
     delete[] coef;
 
@@ -263,13 +263,11 @@ void TForm1::readCoefs()
     coefs += coefLenght;
     // reading coefC
     coefLenght = strspn(coefs, allowed);
-    coef = new char[coefLenght];
+    coef = new char[coefLenght + 1];
     strncpy(coef, coefs, coefLenght);
-    coef[coefLenght - 1] = '\0';
+    coef[coefLenght] = '\0';
     this->coefC = atof(coef);
     delete[] coef;
-
-    delete[] coefs;
 }
 //---------------------------------------------------------------------------
 
