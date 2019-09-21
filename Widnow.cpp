@@ -160,6 +160,7 @@ void __fastcall TForm1::FormMouseWheelUp(TObject *Sender, TShiftState Shift, TPo
 
 void __fastcall TForm1::ScrollTimerTimer(TObject *Sender)
 {
+    // drawing on timer for less flickering
     this->ScrollTimer->Enabled = false;
     this->FormShow(NULL);
 }

@@ -59,6 +59,7 @@ private:	// User declarations
 
     TBitmap *graphBack;
 
+    // drawing methods
     void zoom(int direction);
     float drawingFunstion(float coefA, float coefB, float coefC, float t);
     int toScreen(float val, float start, float stop, int space);
