@@ -39,6 +39,7 @@ __published:	// IDE-managed Components
           bool &Handled);
     void __fastcall ScrollTimerTimer(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+    void __fastcall ReopenButtonClick(TObject *Sender);
 
 private:	// User declarations
     struct FileMapping {

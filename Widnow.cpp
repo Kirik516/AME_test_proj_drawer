@@ -274,3 +274,9 @@ void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::ReopenButtonClick(TObject *Sender)
+{
+    this->readCoefs();
+}
+//---------------------------------------------------------------------------
+
