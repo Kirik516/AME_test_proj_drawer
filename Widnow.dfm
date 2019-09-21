@@ -101,13 +101,6 @@ object Form1: TForm1
       ParentFont = False
       ExplicitHeight = 16
     end
-    object DebugLabel: TLabel
-      Left = 120
-      Top = 40
-      Width = 75
-      Height = 16
-      Caption = 'DebugLabel'
-    end
   end
   object ButtonRefresh: TButton
     Left = 488

@@ -29,7 +29,6 @@ __published:	// IDE-managed Components
     TLabel *PathLabel;
     TEdit *PathEdit;
     TButton *ButtonReopen;
-    TLabel *DebugLabel;
     void __fastcall FormShow(TObject *Sender);
     void __fastcall FormPaint(TObject *Sender);
     void __fastcall ResizeTimerTimer(TObject *Sender);
