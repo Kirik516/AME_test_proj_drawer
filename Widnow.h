@@ -28,7 +28,7 @@ __published:	// IDE-managed Components
     TTimer *ScrollTimer;
     TLabel *PathLabel;
     TEdit *PathEdit;
-    TButton *ReopenButton;
+    TButton *ButtonReopen;
     TLabel *DebugLabel;
     void __fastcall FormShow(TObject *Sender);
     void __fastcall FormPaint(TObject *Sender);
@@ -40,7 +40,8 @@ __published:	// IDE-managed Components
           bool &Handled);
     void __fastcall ScrollTimerTimer(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-    void __fastcall ReopenButtonClick(TObject *Sender);
+    void __fastcall ButtonReopenClick(TObject *Sender);
+    void __fastcall ButtonRefreshClick(TObject *Sender);
 
 private:	// User declarations
     struct FileMapping {
