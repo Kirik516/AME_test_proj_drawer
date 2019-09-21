@@ -21,6 +21,21 @@ object Form1: TForm1
     400)
   PixelsPerInch = 96
   TextHeight = 13
+  object PathLabel: TLabel
+    Left = 8
+    Top = 367
+    Width = 48
+    Height = 13
+    Alignment = taCenter
+    Anchors = [akLeft, akBottom]
+    Caption = 'File path'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object GroupBox1: TGroupBox
     Left = 8
     Top = 8
@@ -94,6 +109,24 @@ object Form1: TForm1
     Anchors = [akRight, akBottom]
     Caption = 'Refresh'
     TabOrder = 1
+  end
+  object PathEdit: TEdit
+    Left = 62
+    Top = 367
+    Width = 339
+    Height = 21
+    Anchors = [akLeft, akBottom]
+    TabOrder = 2
+    Text = 'D:\Embarcadero\Projects\graph_coefs.tgh'
+  end
+  object ReopenButton: TButton
+    Left = 407
+    Top = 367
+    Width = 75
+    Height = 25
+    Caption = 'Reopen'
+    TabOrder = 3
+    OnClick = ReopenButtonClick
   end
   object ResizeTimer: TTimer
     Enabled = False

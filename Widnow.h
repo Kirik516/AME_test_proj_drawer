@@ -23,6 +23,9 @@ __published:	// IDE-managed Components
     TGroupBox *GroupBox1;
     TTimer *ResizeTimer;
     TTimer *ScrollTimer;
+    TLabel *PathLabel;
+    TEdit *PathEdit;
+    TButton *ReopenButton;
     void __fastcall FormShow(TObject *Sender);
     void __fastcall FormPaint(TObject *Sender);
     void __fastcall ResizeTimerTimer(TObject *Sender);
