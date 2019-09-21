@@ -175,8 +175,11 @@ bool TForm1::openFile()
 {
     // code from https://eax.me/winapi-file-mapping/
 
-    wchar_t *fileName = this->PathEdit->Text.c_str();
-    const wchar_t fn[] = L"D:\\Embarcadero\\Projects\\graph_coefs.tgh";
+    int pathLength = this->PathEdit->Text.Length();
+    wchar_t fileName[pathLength + 1];
+    wcsncpy(fileName, this->PathEdit->Text.c_str(), pathLength);
+    fileName[pathLength] = L'\0';
+
     this->mappedData.hFile = CreateFile(fileName, GENERIC_READ, 0, nullptr,
                           OPEN_EXISTING,
                           FILE_ATTRIBUTE_NORMAL, nullptr);
