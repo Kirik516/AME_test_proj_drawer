@@ -68,7 +68,7 @@ private:	// User declarations
     void draw(int width, int height);
 
     // reading date
-    void openFile();
+    bool openFile();
     void readCoefs();
 
 public:		// User declarations

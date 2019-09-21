@@ -21,8 +21,10 @@ __fastcall TForm1::TForm1(TComponent* Owner)
     , coefC(1.0)
     , graphBack(new TBitmap)
 {
-    this->openFile();
-    this->readCoefs();
+    if (this->openFile())
+    {
+        this->readCoefs();
+    }
 }
 //---------------------------------------------------------------------------
 
@@ -169,7 +171,7 @@ void __fastcall TForm1::ScrollTimerTimer(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void TForm1::openFile()
+bool TForm1::openFile()
 {
     // code from https://eax.me/winapi-file-mapping/
 
@@ -184,7 +186,7 @@ void TForm1::openFile()
     {
         std::cerr << "fileMappingCreate - CreateFile failed, fname = "
                 << fileName << std::endl;
-        return;
+        return false;
     }
 
     DWORD dwFileSize = GetFileSize(this->mappedData.hFile, nullptr);
@@ -193,7 +195,7 @@ void TForm1::openFile()
         std::cerr << "fileMappingCreate - GetFileSize failed, fname = "
                 << fileName << std::endl;
         CloseHandle(this->mappedData.hFile);
-        return;
+        return false;
     }
 
     HANDLE hMapping = CreateFileMapping(this->mappedData.hFile, nullptr, PAGE_READONLY,
@@ -203,7 +205,7 @@ void TForm1::openFile()
         std::cerr << "fileMappingCreate - CreateFileMapping failed, fname = "
                 << fileName << std::endl;
         CloseHandle(this->mappedData.hFile);
-        return;
+        return false;
     }
 
     unsigned char* dataPtr = (unsigned char*)MapViewOfFile(hMapping,
@@ -217,12 +219,14 @@ void TForm1::openFile()
                 << fileName << std::endl;
         CloseHandle(hMapping);
         CloseHandle(this->mappedData.hFile);
-        return;
+        return false;
     }
 
     this->mappedData.hMapping = hMapping;
     this->mappedData.fsize = (size_t)dwFileSize;
     this->mappedData.dataPtr = dataPtr;
+
+    return true;
 }
 //---------------------------------------------------------------------------
 
