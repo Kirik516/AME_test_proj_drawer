@@ -266,3 +266,11 @@ void TForm1::readCoefs()
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
+{
+    UnmapViewOfFile(this->mappedData.dataPtr);
+    CloseHandle(this->mappedData.hMapping);
+    CloseHandle(this->mappedData.hFile);
+}
+//---------------------------------------------------------------------------
+
