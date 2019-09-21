@@ -28,7 +28,6 @@ __published:	// IDE-managed Components
     TTimer *ScrollTimer;
     TLabel *PathLabel;
     TEdit *PathEdit;
-    TButton *ButtonReopen;
     void __fastcall FormShow(TObject *Sender);
     void __fastcall FormPaint(TObject *Sender);
     void __fastcall ResizeTimerTimer(TObject *Sender);
@@ -39,7 +38,6 @@ __published:	// IDE-managed Components
           bool &Handled);
     void __fastcall ScrollTimerTimer(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-    void __fastcall ButtonReopenClick(TObject *Sender);
     void __fastcall ButtonRefreshClick(TObject *Sender);
 
 private:	// User declarations

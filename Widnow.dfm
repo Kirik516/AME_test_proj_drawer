@@ -115,20 +115,11 @@ object Form1: TForm1
   object PathEdit: TEdit
     Left = 62
     Top = 367
-    Width = 339
+    Width = 420
     Height = 21
     Anchors = [akLeft, akBottom]
     TabOrder = 2
     Text = 'D:\Embarcadero\Projects\graph_coefs.tgh'
-  end
-  object ButtonReopen: TButton
-    Left = 407
-    Top = 367
-    Width = 75
-    Height = 25
-    Caption = 'Reopen'
-    TabOrder = 3
-    OnClick = ButtonReopenClick
   end
   object ResizeTimer: TTimer
     Enabled = False

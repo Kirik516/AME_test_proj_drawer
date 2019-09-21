@@ -281,12 +281,6 @@ void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::ButtonReopenClick(TObject *Sender)
-{
-    this->openFile();
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TForm1::ButtonRefreshClick(TObject *Sender)
 {
     this->readCoefs();
