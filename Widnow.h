@@ -37,7 +37,6 @@ __published:	// IDE-managed Components
     void __fastcall FormMouseWheelUp(TObject *Sender, TShiftState Shift, TPoint &MousePos,
           bool &Handled);
     void __fastcall ScrollTimerTimer(TObject *Sender);
-    void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall ButtonRefreshClick(TObject *Sender);
 
 private:	// User declarations
@@ -67,6 +66,7 @@ private:	// User declarations
     // reading date
     bool openFile();
     void readCoefs();
+    void unmapFile();
 
 public:		// User declarations
     __fastcall TForm1(TComponent* Owner);
