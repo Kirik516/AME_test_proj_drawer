@@ -20,7 +20,10 @@ __fastcall TForm1::TForm1(TComponent* Owner)
     , coefB(1.0)
     , coefC(1.0)
     , graphBack(new TBitmap)
-{}
+{
+    this->openFile();
+    this->readCoefs();
+}
 //---------------------------------------------------------------------------
 
 void TForm1::zoom(int direction)
