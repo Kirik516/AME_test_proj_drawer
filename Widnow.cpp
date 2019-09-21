@@ -273,7 +273,11 @@ void TForm1::readCoefs()
 
 void __fastcall TForm1::ButtonRefreshClick(TObject *Sender)
 {
-    this->readCoefs();
+    if (this->openFile())
+    {
+        this->readCoefs();
+        this->FormShow(NULL);
+    }
 }
 //---------------------------------------------------------------------------
 
