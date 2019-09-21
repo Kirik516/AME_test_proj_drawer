@@ -21,9 +21,12 @@ __fastcall TForm1::TForm1(TComponent* Owner)
     , coefC(1.0)
     , graphBack(new TBitmap)
 {
+    // I fing only this way for working with mapped files,
+    // cause mapping blocks file to interaction for other apps
     if (this->openFile())
     {
         this->readCoefs();
+        this->unmapFile();
     }
 }
 //---------------------------------------------------------------------------
@@ -271,11 +274,20 @@ void TForm1::readCoefs()
 }
 //---------------------------------------------------------------------------
 
+void TForm1::unmapFile()
+{
+    UnmapViewOfFile(this->mappedData.dataPtr);
+    CloseHandle(this->mappedData.hMapping);
+    CloseHandle(this->mappedData.hFile);
+}
+//---------------------------------------------------------------------------
+
 void __fastcall TForm1::ButtonRefreshClick(TObject *Sender)
 {
     if (this->openFile())
     {
         this->readCoefs();
+        this->unmapFile();
         this->FormShow(NULL);
     }
 }
