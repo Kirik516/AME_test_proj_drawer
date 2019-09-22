@@ -1,4 +1,4 @@
-### AME test proj worker
+### AME test proj drawer
 ##### Тестовый проект для компании АМЕ  
 
 ###### В репозитории проект для Embarcadero® C++Builder 10.3 без каких-либо сторонних записимостей
